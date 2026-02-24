@@ -1,0 +1,629 @@
+/* Strict Business Design CSS with Pop-Art Accents */
+:root {
+    /* Strict Color Palette */
+    --color-black: #0F0F0F;
+    --color-dark: #1A1A1A;
+    --color-grey-dark: #333333;
+    --color-grey-light: #F4F4F4;
+    --color-white: #FFFFFF;
+    --color-border: #E0E0E0;
+    --color-accent: #FF2A2A;
+    /* A pop of Lichtenstein red */
+
+    /* Typography */
+    --font-heading: 'Oswald', sans-serif;
+    --font-text: 'Manrope', sans-serif;
+}
+
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+body {
+    font-family: var(--font-text);
+    color: var(--color-black);
+    background-color: var(--color-white);
+    line-height: 1.6;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Typography Utilities */
+.tracking-tight {
+    letter-spacing: -0.03em;
+    text-transform: uppercase;
+    font-family: var(--font-heading);
+}
+
+.tracking-wide {
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-family: var(--font-heading);
+    font-size: 0.9rem;
+}
+
+.d-block {
+    display: block;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-white {
+    color: var(--color-white) !important;
+}
+
+.text-grey {
+    color: #888888;
+}
+
+.text-accent {
+    color: var(--color-accent);
+}
+
+.mb-2 {
+    margin-bottom: 0.5rem;
+}
+
+.mb-5 {
+    margin-bottom: 3rem;
+}
+
+.mt-4 {
+    margin-top: 2rem;
+}
+
+.mt-5 {
+    margin-top: 3rem;
+}
+
+.pt-4 {
+    padding-top: 1.5rem;
+}
+
+.border-top {
+    border-top: 1px solid #333;
+}
+
+/* Backgrounds & Unique Pop-Art Patterns */
+.hero {
+    position: relative;
+    overflow: hidden;
+    background-color: #f8f8f8;
+    background-image: repeating-conic-gradient(from 0deg at 50% 50%,
+            #FF0000 0deg 15deg,
+            transparent 15deg 30deg);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+.hero-bg-reveal {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    left: -50vw;
+    width: 105vw;
+    background: rgba(255, 255, 255, 0.6);
+    /* Less transparent glass for better readability */
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
+    z-index: 1;
+    transform: translateX(60%);
+    /* Start under the image area */
+    animation: slideInPlate 1.6s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+    animation-delay: 0s;
+    /* Simultaneous start with AOS elements */
+    box-shadow: -15px 0 40px rgba(0, 0, 0, 0.03);
+}
+
+@keyframes slideInPlate {
+    from {
+        transform: translateX(60%);
+    }
+
+    to {
+        transform: translateX(0);
+    }
+}
+
+.hero-layout {
+    display: grid;
+    grid-template-columns: 0.8fr 1.2fr;
+    gap: 60px;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    /* Parent for absolute backdrop */
+}
+
+.hero-content {
+    position: relative;
+    z-index: 3;
+    /* Above backdrop (z-index 1) */
+}
+
+.hero-art-container {
+    position: relative;
+    z-index: 4;
+    /* Above backdrop (z-index 1) */
+}
+
+/* 01 Legend Section - Dynamic Diagonal Lines */
+.bg-light.legend-section {
+    background-color: var(--color-grey-light);
+    background-image: repeating-linear-gradient(45deg, transparent, transparent 15px, rgba(0, 0, 0, 0.02) 15px, rgba(0, 0, 0, 0.02) 16px);
+}
+
+/* 02 Today Section - Classic Grid Pattern */
+.today-section {
+    background-color: var(--color-white);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.04) 1.5px, transparent 1.5px),
+        linear-gradient(90deg, rgba(0, 0, 0, 0.04) 1.5px, transparent 1.5px);
+    background-size: 35px 35px;
+}
+
+/* 03 Code Section - Dense Halftone dots for dark bg */
+.bg-dark.code-section {
+    background-color: var(--color-dark);
+    background-image: radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 8px 8px;
+}
+
+/* Footer - Sparse Dots */
+.bg-black.site-footer {
+    background-color: var(--color-black);
+    background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 20px);
+    background-size: 40px 40px;
+}
+
+.bg-accent {
+    background-color: var(--color-accent);
+}
+
+/* Container */
+.container {
+    width: 100%;
+    max-width: 1400px;
+    /* Wider container for strict business feel */
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+/* UI Elements */
+.btn-primary {
+    display: inline-block;
+    padding: 16px 40px;
+    background-color: var(--color-black);
+    color: var(--color-white);
+    text-decoration: none;
+    font-family: var(--font-heading);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: 1rem;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    border: 1px solid var(--color-black);
+}
+
+.btn-primary:hover {
+    background-color: var(--color-white);
+    color: var(--color-black);
+}
+
+/* Navigation */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--color-border);
+    padding: 20px 0;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    text-decoration: none;
+    font-size: 2rem;
+    color: var(--color-black);
+    font-family: var(--font-heading);
+    font-weight: 700;
+    letter-spacing: -0.05em;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 40px;
+}
+
+.nav-links li a {
+    text-decoration: none;
+    font-size: 0.9rem;
+    color: var(--color-grey-dark);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    position: relative;
+    padding: 5px 0;
+    transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: inline-block;
+}
+
+.nav-links li a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: var(--color-accent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+}
+
+.nav-links li a:hover {
+    color: var(--color-accent);
+    font-weight: 800;
+}
+
+.nav-links li a:hover::after {
+    transform: scaleX(1);
+}
+
+.burger {
+    display: none;
+    cursor: pointer;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.burger span {
+    display: block;
+    width: 25px;
+    height: 2px;
+    background-color: var(--color-black);
+    transition: 0.3s;
+}
+
+/* Sections General */
+.strict-section {
+    padding: 140px 0;
+}
+
+.section-label {
+    color: var(--color-accent);
+    /* Focus color */
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.section-title {
+    font-size: 3.5rem;
+    line-height: 1.1;
+    margin-bottom: 30px;
+}
+
+.section-desc {
+    font-size: 1.25rem;
+    color: var(--color-grey-dark);
+    max-width: 600px;
+    line-height: 1.8;
+}
+
+/* ART FRAMES - The Lichtenstein Accents */
+.art-frame {
+    background: var(--color-white);
+    padding: 15px;
+    /* Neater spacing */
+    border: 1px solid var(--color-border);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    /* Softer shadow */
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+
+.art-frame:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+}
+
+.art-frame img {
+    width: 100%;
+    height: auto;
+    display: block;
+    outline: 1px solid rgba(0, 0, 0, 0.05);
+    /* Very thin inner outline for edge definition */
+}
+
+.border-grey {
+    border-color: #333;
+}
+
+/* For dark theme caption */
+
+/* Hero Layout */
+/* Hero title and description styles */
+
+.hero-title {
+    font-size: 5.5rem;
+    line-height: 1;
+    margin-bottom: 15px;
+}
+
+.hero-desc {
+    font-size: 1.5rem;
+    color: var(--color-grey-dark);
+    margin-bottom: 40px;
+    font-weight: 300;
+}
+
+/* Legend Layout */
+.legend-layout {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 80px;
+    align-items: center;
+}
+
+.stats-strip {
+    display: flex;
+    gap: 60px;
+    margin-top: 50px;
+    padding-top: 50px;
+    border-top: 1px solid var(--color-border);
+}
+
+.stat-box {
+    display: flex;
+    flex-direction: column;
+}
+
+.stat-val {
+    font-size: 4rem;
+    font-family: var(--font-heading);
+    line-height: 1;
+    color: var(--color-accent) !important;
+    font-weight: 500;
+}
+
+.stat-name {
+    margin-top: 10px;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-grey-dark);
+}
+
+/* Today Section Layout */
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+}
+
+.strict-card {
+    padding: 50px;
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.strict-card:hover {
+    border-color: var(--color-accent);
+    box-shadow: 0 15px 40px rgba(255, 42, 42, 0.1);
+}
+
+.card-num {
+    display: block;
+    font-size: 1rem;
+    color: var(--color-accent);
+    font-family: var(--font-heading);
+    margin-bottom: 20px;
+}
+
+.strict-card h3 {
+    font-size: 1.8rem;
+    font-family: var(--font-heading);
+    text-transform: uppercase;
+    margin-bottom: 15px;
+}
+
+.strict-card p {
+    color: var(--color-grey-dark);
+    font-size: 1.1rem;
+}
+
+/* Code Layout */
+.code-layout {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 80px;
+}
+
+.code-intro {
+    position: sticky;
+    top: 120px;
+    align-self: start;
+}
+
+.code-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.code-item {
+    display: flex;
+    gap: 40px;
+    padding: 40px 0;
+    border-bottom: 1px solid #333333;
+}
+
+.code-num {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    color: var(--color-accent);
+    line-height: 1.2;
+}
+
+.code-content h4 {
+    font-size: 1.5rem;
+    font-family: var(--font-heading);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.code-content p {
+    color: #AAAAAA;
+    font-size: 1.1rem;
+}
+
+/* Footer Layout */
+.site-footer {
+    padding: 100px 0 40px 0;
+}
+
+.footer-layout {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.footer-cta {
+    font-size: 4rem;
+    transition: transform 0.3s ease, color 0.3s ease;
+    cursor: default;
+}
+
+.footer-cta:hover {
+    color: var(--color-accent);
+    transform: scale(1.02);
+}
+
+.vibrate-mark {
+    display: inline-block;
+    animation: vibrateLow 1.5s linear infinite;
+    color: var(--color-white);
+    margin-left: 2px;
+}
+
+@keyframes vibrateLow {
+    0% {
+        transform: translate(0);
+    }
+
+    20% {
+        transform: translate(-1px, 1px);
+    }
+
+    40% {
+        transform: translate(-1px, -1px);
+    }
+
+    60% {
+        transform: translate(1px, 1px);
+    }
+
+    80% {
+        transform: translate(1px, -1px);
+    }
+
+    100% {
+        transform: translate(0);
+    }
+}
+
+.email-link {
+    font-size: 2rem;
+    color: var(--color-accent);
+    text-decoration: none;
+    font-family: var(--font-heading);
+    display: inline-block;
+    border-bottom: 2px solid transparent;
+    transition: 0.3s;
+}
+
+.email-link:hover {
+    border-bottom-color: var(--color-accent);
+}
+
+.footer-info {
+    text-align: right;
+    font-size: 1.2rem;
+}
+
+/* Responsive */
+@media (max-width: 1100px) {
+    .hero-title {
+        font-size: 4rem;
+    }
+
+    .hero-layout,
+    .legend-layout,
+    .code-layout {
+        grid-template-columns: 1fr;
+        gap: 60px;
+    }
+
+    .code-intro {
+        position: static;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 0 20px;
+    }
+
+    .hero-title {
+        font-size: 3rem;
+    }
+
+    .section-title {
+        font-size: 2.5rem;
+    }
+
+    .nav-links {
+        display: none;
+    }
+
+    .burger {
+        display: flex;
+    }
+
+    .cards-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .stats-strip {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .footer-layout {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 40px;
+    }
+
+    .footer-info {
+        text-align: left;
+    }
+}
