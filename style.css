@@ -711,9 +711,20 @@ body {
         margin: 0 auto !important;
         width: fit-content !important;
         visibility: visible !important;
-        opacity: 1 !important;
-        transform: none !important;
-        /* Force to final position if GSAP hangs */
+        opacity: 0 !important;
+        animation: heroBtnAppear 1.2s ease-out 1s forwards !important;
+    }
+
+    @keyframes heroBtnAppear {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
     }
 
     .hero-image-wrapper {
@@ -735,8 +746,7 @@ body {
     /* Форсируем видимость на мобильных, если GSAP задержится */
     .hero-image-wrapper,
     .title-word,
-    .char,
-    .hero-btn {
+    .char {
         visibility: visible;
         opacity: 1;
     }
