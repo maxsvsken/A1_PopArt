@@ -659,12 +659,16 @@ body {
         padding: 0 20px;
     }
 
+    .strict-section {
+        padding: 60px 0;
+    }
+
     .hero-layout {
-        padding-top: 80px;
+        padding-top: 60px;
         /* offset for nav */
         flex-direction: column;
         /* Текст сверху, картинка снизу */
-        gap: 20px;
+        gap: 15px;
     }
 
     .hero-title {
@@ -675,7 +679,7 @@ body {
 
     .hero-subtitle {
         font-size: 1rem;
-        margin-bottom: 15px;
+        margin-bottom: 10px;
     }
 
     .hero-image-wrapper {
