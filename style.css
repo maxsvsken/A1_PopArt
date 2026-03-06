@@ -116,21 +116,12 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    /* Pure white background for the whole section blend */
-    background-color: rgb(37, 67, 149);
-    background-image: url('images/vector-bright-black-and-white-rays-background.jpg');
+    /* Vector SVG for perfect crispness */
+    background: url('images/rays.svg') center center no-repeat;
     background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
 
-    /* Screen mode: Black rays become the BG color (Blue), White stays White */
-    background-blend-mode: screen;
-
-    /* High contrast makes the blue more vibrant and the white more 'pure' */
-    filter: contrast(1.8) brightness(1.1);
-
-    opacity: 0.25;
-    /* Visible but professional */
+    opacity: 0.12;
+    /* Subtle vector rays */
     z-index: 0;
     pointer-events: none;
 }
@@ -196,15 +187,12 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgb(37, 67, 149);
-    background-image: url('images/vector-bright-black-and-white-rays-background.jpg');
+    /* Vector SVG for perfect crispness */
+    background: url('images/rays.svg') center center no-repeat;
     background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-blend-mode: screen;
-    filter: contrast(1.8) brightness(1.1);
-    opacity: 0.15;
-    /* Subtle opacity for content readability */
+
+    opacity: 0.08;
+    /* Even more subtle in content sections */
     z-index: 0;
     pointer-events: none;
 }
