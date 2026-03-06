@@ -109,7 +109,35 @@ body {
     -webkit-display: flex;
 }
 
+.hero::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    /* Rays image in bright blue color */
+    background: url('images/vector-bright-black-and-white-rays-background.jpg') center center no-repeat;
+    background-size: cover;
 
+    /* Optimized filter to get a pure bright blue (#007bff) from B&W */
+    filter: invert(42%) sepia(93%) saturate(1352%) hue-rotate(190deg) brightness(119%) contrast(119%);
+
+    opacity: 0.15;
+    z-index: 0;
+    pointer-events: none;
+    animation: rotateRays 120s linear infinite;
+}
+
+@keyframes rotateRays {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
 
 .hero-layout {
     display: flex;
