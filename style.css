@@ -659,6 +659,12 @@ body {
     }
 }
 
+.hero-rotate-a1 {
+    display: inline-block;
+    animation: flipAndStand 4s cubic-bezier(0.175, 0.885, 0.32, 1.275) infinite;
+    transform-origin: center;
+}
+
 
 
 .email-link {
