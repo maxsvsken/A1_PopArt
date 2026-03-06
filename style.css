@@ -180,10 +180,12 @@ body {
     object-fit: cover;
 }
 
-/* 01 Legend Section - Reverted to clean white or original subtle pattern */
+/* 01 Legend Section - Pop-Art Halftone Dots Background */
 .legend-section {
-    background-color: var(--color-grey-light);
-    background-image: repeating-linear-gradient(45deg, transparent, transparent 15px, rgba(0, 0, 0, 0.02) 15px, rgba(0, 0, 0, 0.02) 16px);
+    background-color: var(--color-white);
+    background-image: radial-gradient(rgba(0, 0, 0, 0.05) 20%, transparent 20%);
+    background-size: 15px 15px;
+    /* Classic pop-art dot size */
 }
 
 /* 02 Director & Myths Sections - Blue Rays Pattern */
