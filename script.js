@@ -249,6 +249,44 @@ document.addEventListener('DOMContentLoaded', () => {
                 opacity: 1 // Ensure section itself is visible
             });
 
+            // Special handling for the Code (rules) section
+            if (section.id === 'code') {
+                const list = section.querySelector('.code-list');
+                const intro = section.querySelector('.code-intro');
+                
+                if (list && intro) {
+                    // Force the section to pin and the list to scroll
+                    const tl = gsap.timeline({
+                        scrollTrigger: {
+                            trigger: section,
+                            start: "top top",
+                            end: () => `+=${list.offsetHeight}`,
+                            pin: true,
+                            scrub: 1,
+                            pinSpacing: true,
+                            onUpdate: (self) => {
+                                // Smoothly move the list up based on scroll progress
+                                const scrollDistance = list.offsetHeight - window.innerHeight + 200;
+                                if (scrollDistance > 0) {
+                                    gsap.set(list, { y: -scrollDistance * self.progress });
+                                }
+                            }
+                        }
+                    });
+                    
+                    // Add dot tracking
+                    ScrollTrigger.create({
+                        trigger: section,
+                        start: "top 50%",
+                        end: () => `+=${list.offsetHeight}`,
+                        onEnter: () => updateDot(index),
+                        onEnterBack: () => updateDot(index)
+                    });
+                    
+                    return; // Skip default logic for this section
+                }
+            }
+
             const isLongSection = section.offsetHeight > window.innerHeight * 1.2;
 
             if (!isLongSection) {
