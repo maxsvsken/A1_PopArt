@@ -118,18 +118,16 @@ body {
     height: 100%;
     /* Pure white background for the whole section blend */
     background-color: #777777;
-    background-image: url('images/vector-bright-black-and-white-rays-background.jpg');
+    background-image: url('images/retro-groovy-background-wavy-vintage-trippy-psychedelic-wallpaper-purple-yellow-liquid-hippie-texture-colorful-pattern-for-cover-poster-in-60s-or-70s-style-vector.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    background-blend-mode: luminosity;
 
-    /* Screen mode: Black rays become the BG color (Grey), White stays White */
-    background-blend-mode: screen;
+    /* Grayscale filter to make it grey as requested */
+    filter: grayscale(100%) contrast(1.2) brightness(1.1);
 
-    /* High contrast makes the blue more vibrant and the white more 'pure' */
-    filter: contrast(1.5) brightness(1.0);
-
-    opacity: 0.25;
+    opacity: 0.15;
     /* Visible but professional */
     z-index: 0;
     pointer-events: none;
@@ -188,7 +186,7 @@ body {
     /* Classic pop-art dot size */
 }
 
-/* 02 Director & Myths Sections - Grey Rays Pattern */
+/* 02 Director & Myths Sections - Grey Groovy Pattern */
 .director-section,
 .myths-section {
     position: relative;
@@ -207,13 +205,13 @@ body {
     width: 100%;
     height: 100%;
     background-color: #777777;
-    background-image: url('images/vector-bright-black-and-white-rays-background.jpg');
+    background-image: url('images/retro-groovy-background-wavy-vintage-trippy-psychedelic-wallpaper-purple-yellow-liquid-hippie-texture-colorful-pattern-for-cover-poster-in-60s-or-70s-style-vector.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    background-blend-mode: screen;
-    filter: contrast(1.5) brightness(0.9);
-    opacity: 0.15;
+    background-blend-mode: luminosity;
+    filter: grayscale(100%) contrast(1.1) brightness(1.2);
+    opacity: 0.12;
     z-index: 0;
     pointer-events: none;
 }
