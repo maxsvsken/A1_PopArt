@@ -129,7 +129,7 @@ body {
     /* High contrast makes the blue more vibrant and the white more 'pure' */
     filter: contrast(1.8) brightness(1.2);
 
-    opacity: 0.35;
+    opacity: 0.45;
     /* Visible but professional */
     z-index: 0;
     pointer-events: none;
@@ -213,7 +213,7 @@ body {
     background-repeat: no-repeat;
     background-blend-mode: screen;
     filter: contrast(1.8) brightness(1.1);
-    opacity: 0.12;
+    opacity: 0.35;
     z-index: 0;
     pointer-events: none;
 }
@@ -236,6 +236,9 @@ body {
 .myths-section .faq-item p {
     position: relative;
     z-index: 2;
+    font-size: 1.35rem;
+    /* Increased font size for better readability */
+    line-height: 1.7;
 }
 
 /* 02 Today Section - Classic Grid Pattern */
