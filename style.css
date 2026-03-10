@@ -129,7 +129,7 @@ body {
     /* High contrast makes the blue more vibrant and the white more 'pure' */
     filter: contrast(1.5) brightness(1.0);
 
-    opacity: 0.55;
+    opacity: 0.25;
     /* Visible but professional */
     z-index: 0;
     pointer-events: none;
@@ -213,7 +213,7 @@ body {
     background-repeat: no-repeat;
     background-blend-mode: screen;
     filter: contrast(1.5) brightness(0.9);
-    opacity: 0.45;
+    opacity: 0.15;
     z-index: 0;
     pointer-events: none;
 }
