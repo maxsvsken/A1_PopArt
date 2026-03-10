@@ -480,10 +480,17 @@ body {
     color: var(--color-accent) !important;
 }
 
-/* Legend Layout */
+/* Legend & Director Layout */
 .legend-layout {
     display: grid;
     grid-template-columns: 1fr 1.2fr;
+    gap: 80px;
+    align-items: center;
+}
+
+.director-layout {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
     gap: 80px;
     align-items: center;
 }
@@ -724,6 +731,7 @@ body {
     }
 
     .legend-layout,
+    .director-layout,
     .code-layout {
         grid-template-columns: 1fr;
         gap: 40px;
