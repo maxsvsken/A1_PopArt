@@ -971,15 +971,13 @@ details[open].faq-item p {
 
     .hero-layout.container {
         margin-top: 0 !important;
-        padding-top: 80px;
-        /* Отступ под шапку */
+        padding-top: 40px;
+        /* Balanced top padding */
     }
 
     .hero-layout {
-        /* padding-top: 47px; убираем дубль */
         flex-direction: column;
-        /* Текст сверху, картинка снизу */
-        gap: 60px;
+        gap: 30px;
         justify-content: flex-start !important;
     }
 
@@ -1006,7 +1004,7 @@ details[open].faq-item p {
 
     .hero-btn {
         display: block !important;
-        margin: 40px auto 0 auto !important;
+        margin: 30px auto 0 auto !important;
         width: fit-content !important;
         visibility: visible !important;
         opacity: 0;
@@ -1029,8 +1027,9 @@ details[open].faq-item p {
         flex: none !important;
         width: 100%;
         max-width: 100%;
+        margin-top: 80px !important;
+        /* Space for the -60px speech bubble */
         overflow: visible !important;
-        /* Убираем обрезку */
     }
 
     .hero-image {
