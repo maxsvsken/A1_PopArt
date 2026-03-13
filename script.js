@@ -149,11 +149,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
     navAnchors.forEach(anchor => {
         anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            e.stopPropagation(); // Prevent normal jump
-
             const href = this.getAttribute('href');
             if (!href) return;
+
+            // На мобильных устройствах не перехватываем клик (убираем e.preventDefault), 
+            // просто надежно закрываем меню и даем браузеру самому перейти по ссылке.
+            if (window.innerWidth <= 900) {
+                if (navLinks) {
+                    navLinks.classList.remove('nav-active');
+                    navLinks.style.display = '';
+                    const b = document.getElementById('burger');
+                    if (b) b.classList.remove('open');
+                    const n = document.querySelector('.navbar');
+                    if (n) n.classList.remove('menu-open');
+                }
+                return; // Нативный прыжок по якорю
+            }
+
+            // --- Логика GSAP для десктопа ниже ---
+            e.preventDefault();
+            e.stopPropagation();
 
             const targetId = (href === '#' || !href) ? '#hero' : href;
             const targetElement = document.querySelector(targetId);
@@ -182,15 +197,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 } else {
                     // Hard fallback if GSAP not loaded
                     targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-
-                if (window.innerWidth <= 900 && navLinks) {
-                    navLinks.classList.remove('nav-active');
-                    navLinks.style.display = ''; // Clear inline styles if any exist
-                    const b = document.getElementById('burger');
-                    if (b) b.classList.remove('open');
-                    const n = document.querySelector('.navbar');
-                    if (n) n.classList.remove('menu-open');
                 }
             }
         });
