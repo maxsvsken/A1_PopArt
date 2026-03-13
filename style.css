@@ -346,7 +346,7 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-    z-index: 1000;
+    z-index: 10000;
     background: transparent;
     border-bottom: none;
     padding: 25px 0;
@@ -1156,8 +1156,8 @@ details[open].faq-item p {
     top: 50% !important;
     right: 20px !important;
     transform: translateY(-50%) !important;
-    z-index: 999999 !important;
-    pointer-events: auto !important;
+    z-index: 9000 !important;
+    pointer-events: none !important;
     display: block !important;
 }
 
@@ -1178,6 +1178,7 @@ details[open].faq-item p {
     transition: all 0.3s ease;
     position: relative;
     cursor: pointer;
+    pointer-events: auto !important;
     /* subtle shadow to ensure visibility on light and dark alike */
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.2), inset 0 0 2px rgba(0, 0, 0, 0.2);
 }
