@@ -5,18 +5,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const navLinks = document.querySelector('.nav-links');
 
     if (burger) {
-        burger.addEventListener('click', (e) => {
-            e.stopPropagation(); // Отменяем всплытие, чтобы не сработал клик по документу сразу
+        burger.addEventListener('click', () => {
+            const navbar = document.querySelector('.navbar');
             navLinks.classList.toggle('nav-active');
             burger.classList.toggle('open');
-        });
-
-        // Закрытие меню при клике вне его области
-        document.addEventListener('click', (e) => {
-            if (navLinks.classList.contains('nav-active') && !navLinks.contains(e.target) && !burger.contains(e.target)) {
-                navLinks.classList.remove('nav-active');
-                burger.classList.remove('open');
-            }
+            if (navbar) navbar.classList.toggle('menu-open');
         });
     }
 

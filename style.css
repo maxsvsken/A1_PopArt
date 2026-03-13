@@ -347,15 +347,16 @@ body {
     left: 0;
     width: 100%;
     z-index: 10000;
-    background: rgba(255, 255, 255, 0.8);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    background: transparent;
     border-bottom: none;
     padding: 25px 0;
     transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
 .navbar-scrolled {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     padding: 12px 0;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08);
     border-bottom: 1px solid rgba(0, 0, 0, 0.05);
@@ -1019,6 +1020,15 @@ details[open].faq-item p {
         font-size: 2rem !important;
     }
 
+    .nav-links,
+    .navbar.menu-open {
+        background: rgba(255, 255, 255, 0.5) !important;
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.3)) !important;
+        backdrop-filter: blur(30px) saturate(200%) brightness(1.1) !important;
+        -webkit-backdrop-filter: blur(30px) saturate(200%) brightness(1.1) !important;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+    }
+
     .nav-links {
         display: none;
         position: absolute;
@@ -1027,14 +1037,10 @@ details[open].faq-item p {
         width: 100%;
         max-height: 85vh;
         overflow-y: auto;
-        /* Ultra Liquid Glass */
-        background: rgba(255, 255, 255, 0.5) !important;
-        background: linear-gradient(135deg, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.3)) !important;
-        backdrop-filter: blur(30px) saturate(200%) brightness(1.1) !important;
-        -webkit-backdrop-filter: blur(30px) saturate(200%) brightness(1.1) !important;
         border: 1px solid rgba(255, 255, 255, 0.5);
         border-top: 1px solid rgba(255, 255, 255, 0.8);
-
+        border-bottom: none;
+        /* override */
         flex-direction: column;
         align-items: center;
         padding: 50px 0;
