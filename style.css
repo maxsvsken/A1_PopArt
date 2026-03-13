@@ -720,13 +720,17 @@ details[open].faq-item p {
 
 /* Code Layout */
 .code-section {
-    padding: 100px 0 60px 0 !important;
+    padding: 120px 0 60px 0 !important;
     height: 100vh !important;
     min-height: 100vh !important;
     display: flex !important;
     align-items: flex-start !important;
     overflow: hidden !important;
     /* Обрезает невидимый хвост секции, блокировавший клики */
+}
+
+.code-section>.container {
+    margin-top: 0 !important;
 }
 
 .code-layout {
