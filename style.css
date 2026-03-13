@@ -926,22 +926,59 @@ details[open].faq-item p {
     }
 
     .strict-section {
-        padding: 100px 0 60px 0;
+        padding: 100px 0 60px 0 !important;
+        min-height: auto !important;
+        display: block !important;
+    }
+
+    .strict-section>.container {
+        margin-top: 0 !important;
+        margin-bottom: 0 !important;
     }
 
     .hero-layout.container {
-        margin-top: 0 !important;
-        padding-top: 80px;
-        /* Отступ под шапку */
+        padding-top: 0 !important;
+        /* Убираем лишний, так как у секции уже 100px */
     }
 
     .hero-layout {
-        /* padding-top: 47px; убираем дубль */
         flex-direction: column;
         /* Текст сверху, картинка снизу */
-        gap: 60px;
+        gap: 40px;
         justify-content: flex-start !important;
     }
+
+    /* Layout adjustments - Text always on top */
+    .legend-layout {
+        display: flex !important;
+        flex-direction: column-reverse !important;
+        gap: 40px;
+    }
+
+    .director-layout {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 40px;
+    }
+
+    .legend-content,
+    .director-content {
+        width: 100% !important;
+        text-align: center;
+    }
+
+    .legend-art-container,
+    .director-img {
+        width: 100% !important;
+        max-width: 450px;
+        margin: 0 auto;
+    }
+
+    .section-desc {
+        text-align: left;
+        /* Оставляем описание читабельным слева */
+    }
+
 
     .hero-content {
         flex: none !important;
@@ -1101,7 +1138,7 @@ details[open].faq-item p {
     .code-section {
         height: auto !important;
         min-height: auto !important;
-        padding: 40px 0 !important;
+        padding: 100px 0 60px 0 !important;
         display: block !important;
     }
 
