@@ -928,6 +928,12 @@ details[open].faq-item p {
 }
 
 @media (max-width: 768px) {
+    .section-label {
+        text-align: center !important;
+        display: block !important;
+        width: 100%;
+    }
+
     .container {
         padding: 0 20px;
     }
@@ -1027,6 +1033,26 @@ details[open].faq-item p {
 
     .section-title {
         font-size: 2.2rem;
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .legend-content,
+    .director-text {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .section-desc {
+        text-align: center;
+    }
+
+    .art-frame {
+        margin-left: auto;
+        margin-right: auto;
     }
 
     .contact-title {
@@ -1131,6 +1157,7 @@ details[open].faq-item p {
 
     .code-text-content {
         width: 100% !important;
+        text-align: center;
     }
 
     .code-list {
