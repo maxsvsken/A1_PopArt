@@ -641,15 +641,22 @@ details[open].faq-item p {
 .legend-layout {
     display: grid;
     grid-template-columns: 1fr 1.2fr;
-    gap: 80px;
-    align-items: center;
+    gap: 40px 80px;
+    align-items: flex-start;
 }
 
 .director-layout {
     display: grid;
-    grid-template-columns: 1.2fr 1fr;
-    gap: 80px;
-    align-items: center;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 40px 80px;
+    align-items: flex-start;
+}
+
+.legend-layout .section-label,
+.director-layout .section-label,
+.code-layout .section-label {
+    grid-column: 1 / -1;
+    margin-bottom: 20px;
 }
 
 .stats-strip {
@@ -738,21 +745,21 @@ details[open].faq-item p {
 .code-layout {
     display: grid;
     grid-template-columns: 1fr 1.5fr;
-    gap: 40px;
+    gap: 40px 80px;
     width: 100%;
     align-items: flex-start;
 }
 
-.code-intro {
+.code-intro-img {
     position: sticky;
-    top: 20px;
+    top: 100px;
     align-self: start;
     text-align: center;
-    padding-top: 20px;
 }
 
-.code-intro h2 {
-    margin-top: 0;
+.code-text-content {
+    display: flex;
+    flex-direction: column;
 }
 
 .code-list {
@@ -926,59 +933,22 @@ details[open].faq-item p {
     }
 
     .strict-section {
-        padding: 100px 0 60px 0 !important;
-        min-height: auto !important;
-        display: block !important;
-    }
-
-    .strict-section>.container {
-        margin-top: 0 !important;
-        margin-bottom: 0 !important;
+        padding: 100px 0 60px 0;
     }
 
     .hero-layout.container {
-        padding-top: 0 !important;
-        /* Убираем лишний, так как у секции уже 100px */
+        margin-top: 0 !important;
+        padding-top: 80px;
+        /* Отступ под шапку */
     }
 
     .hero-layout {
+        /* padding-top: 47px; убираем дубль */
         flex-direction: column;
         /* Текст сверху, картинка снизу */
-        gap: 40px;
+        gap: 60px;
         justify-content: flex-start !important;
     }
-
-    /* Layout adjustments - Text always on top */
-    .legend-layout {
-        display: flex !important;
-        flex-direction: column-reverse !important;
-        gap: 40px;
-    }
-
-    .director-layout {
-        display: flex !important;
-        flex-direction: column !important;
-        gap: 40px;
-    }
-
-    .legend-content,
-    .director-content {
-        width: 100% !important;
-        text-align: center;
-    }
-
-    .legend-art-container,
-    .director-img {
-        width: 100% !important;
-        max-width: 450px;
-        margin: 0 auto;
-    }
-
-    .section-desc {
-        text-align: left;
-        /* Оставляем описание читабельным слева */
-    }
-
 
     .hero-content {
         flex: none !important;
@@ -1138,7 +1108,6 @@ details[open].faq-item p {
     .code-section {
         height: auto !important;
         min-height: auto !important;
-        padding: 100px 0 60px 0 !important;
         display: block !important;
     }
 
@@ -1148,16 +1117,20 @@ details[open].faq-item p {
         gap: 0 !important;
     }
 
-    .code-intro {
+    .code-intro-img {
         position: static !important;
         width: 100% !important;
         margin-bottom: 30px !important;
         text-align: center;
     }
 
-    .code-intro .art-frame {
+    .code-intro-img .art-frame {
         max-width: 100% !important;
         margin: 20px auto !important;
+    }
+
+    .code-text-content {
+        width: 100% !important;
     }
 
     .code-list {
