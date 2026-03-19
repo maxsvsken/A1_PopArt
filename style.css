@@ -954,13 +954,18 @@ details[open].faq-item p {
 
     /* Mobile Sticky Wrapper for Headers and Intro */
     #code .section-label,
-    #code .code-main-title,
-    .code-intro-img {
+    #code .code-main-title {
         background-color: var(--color-dark);
         background-image: radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px);
         background-size: 8px 8px;
         width: 100% !important;
         margin: 0 !important;
+    }
+
+    .code-intro-img {
+        width: 100% !important;
+        margin: 0 !important;
+        background: none !important; /* Remove the plate from under the image */
     }
 
     #code .section-label {
