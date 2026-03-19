@@ -961,13 +961,15 @@ details[open].faq-item p {
     }
 
     .code-intro-img .art-frame {
-        max-width: 400px;
+        max-width: 600px;
         margin: 0 auto;
+        padding: 5px; /* compact padding like other sections */
     }
 
     .code-intro-img img {
-        max-height: 25vh !important;
-        object-fit: contain !important;
+        height: 200px !important;
+        object-fit: cover !important;
+        width: 100% !important;
     }
 
     .code-section {
@@ -1239,11 +1241,13 @@ details[open].faq-item p {
     .code-intro-img .art-frame {
         max-width: 100% !important;
         margin: 15px auto !important;
+        padding: 5px !important;
     }
     
     .code-intro-img img {
-        max-height: 180px !important;
-        object-fit: contain !important;
+        height: 160px !important;
+        object-fit: cover !important;
+        width: 100% !important;
     }
 
     .code-item {
