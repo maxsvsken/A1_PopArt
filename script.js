@@ -291,7 +291,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (list && intro) {
                     let scrollDistance = 0;
 
-                    // Force the section to pin and the list to scroll
                     const tl = gsap.timeline({
                         scrollTrigger: {
                             trigger: section,
@@ -301,37 +300,30 @@ document.addEventListener('DOMContentLoaded', () => {
                             scrub: 1,
                             pinSpacing: true,
                             onRefresh: () => {
-                                // Mobile & Portable: headers take some space, let's keep them visible
                                 const isPortable = window.innerWidth <= 1320;
-                                const headersOffset = isPortable ? 120 : 0;
+                                const headersOffset = isPortable ? 140 : 0;
                                 
-                                // Reset positions with offset
-                                gsap.set([list, intro], { y: headersOffset });
+                                gsap.set(intro, { y: headersOffset, opacity: 1 });
+                                const introHeight = intro.offsetHeight;
+                                gsap.set(list, { y: headersOffset + introHeight + 20, opacity: 1 });
                                 
                                 const listHeight = list.offsetHeight;
-                                const introHeight = intro.offsetHeight;
+                                scrollDistance = Math.max(0, listHeight + introHeight + headersOffset + 100 - window.innerHeight);
                                 
-                                // Total distance to scroll everything past the viewport
-                                // We subtract what's already visible.
-                                // headersOffset is where we START, so we need to move the content UP by its total height
-                                const totalContentHeight = listHeight + introHeight + headersOffset;
-                                scrollDistance = Math.max(0, totalContentHeight - window.innerHeight + 80);
-                                
-                                // Store the offset for use in onUpdate
                                 section._headersOffset = headersOffset;
+                                section._introHeight = introHeight;
                             },
                             onUpdate: (self) => {
                                 if (scrollDistance > 0) {
-                                    const offset = section._headersOffset || 0;
-                                    const y = offset - (scrollDistance * self.progress);
+                                    const hOffset = section._headersOffset || 0;
+                                    const iHeight = section._introHeight || 0;
+                                    const scrollY = scrollDistance * self.progress;
 
                                     if (window.innerWidth <= 1320) {
-                                        gsap.set([list, intro], { y });
-                                        gsap.set(list, { opacity: 1, visibility: 'visible' });
-                                        gsap.set(intro, { opacity: gsap.utils.clamp(0.2, 1, 1 - (self.progress * 1.5)) });
+                                        gsap.set(intro, { y: hOffset - scrollY, opacity: gsap.utils.clamp(0.2, 1, 1 - (self.progress * 1.5)) });
+                                        gsap.set(list, { y: hOffset + iHeight + 20 - scrollY, opacity: 1 });
                                     } else {
-                                        // Desktop: standard y adjustment
-                                        gsap.set(list, { y: -(scrollDistance * self.progress) });
+                                        gsap.set(list, { y: -scrollY });
                                     }
                                 }
                             }
