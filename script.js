@@ -301,16 +301,19 @@ document.addEventListener('DOMContentLoaded', () => {
                             pinSpacing: true,
                             onRefresh: () => {
                                 const isPortable = window.innerWidth <= 1320;
-                                const headersOffset = isPortable ? 110 : 0;
+                                // Even smaller offset to keep things tight
+                                const headersOffset = isPortable ? 80 : 0;
                                 
+                                // Initial positions
                                 gsap.set(intro, { y: headersOffset, opacity: 1 });
                                 const introHeight = intro.offsetHeight;
-                                // Tighter gap between image and rules
-                                gsap.set(list, { y: headersOffset + introHeight + 10, opacity: 1 });
+                                // Minimal gap
+                                gsap.set(list, { y: headersOffset + introHeight, opacity: 1 });
                                 
                                 const listHeight = list.offsetHeight;
-                                // Minimize extra scroll padding
-                                scrollDistance = Math.max(0, listHeight + introHeight + headersOffset + 40 - window.innerHeight);
+                                // Exact scroll distance: how much we need to move to see everything
+                                // scrollDistance = content_height - visible_area
+                                scrollDistance = Math.max(0, (listHeight + introHeight + headersOffset) - window.innerHeight + 20);
                                 
                                 section._headersOffset = headersOffset;
                                 section._introHeight = introHeight;
@@ -322,8 +325,15 @@ document.addEventListener('DOMContentLoaded', () => {
                                     const scrollY = scrollDistance * self.progress;
 
                                     if (window.innerWidth <= 1320) {
-                                        gsap.set(intro, { y: hOffset - scrollY, opacity: gsap.utils.clamp(0.2, 1, 1 - (self.progress * 1.5)) });
-                                        gsap.set(list, { y: hOffset + iHeight + 10 - scrollY, opacity: 1 });
+                                        // Update both intro and list
+                                        gsap.set(intro, { 
+                                            y: hOffset - scrollY, 
+                                            opacity: gsap.utils.clamp(0.1, 1, 1 - (self.progress * 1.8)) 
+                                        });
+                                        gsap.set(list, { 
+                                            y: hOffset + iHeight - scrollY,
+                                            opacity: 1
+                                        });
                                     } else {
                                         gsap.set(list, { y: -scrollY });
                                     }
