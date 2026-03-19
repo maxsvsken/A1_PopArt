@@ -301,31 +301,35 @@ document.addEventListener('DOMContentLoaded', () => {
                             scrub: 1,
                             pinSpacing: true,
                             onRefresh: () => {
-                                // Calculate distance to scroll the list safely
-                                gsap.set([list, intro], { y: 0 }); // reset
+                                // Mobile: we need space for the sticky headers (approx 160px)
+                                const headersOffset = window.innerWidth <= 1100 ? 160 : 0;
                                 
-                                // Calculate how much list overflow we have
-                                // We want the bottom of the list to reach the bottom of the screen
+                                // Reset positions with offset
+                                gsap.set([list, intro], { y: headersOffset });
+                                
                                 const listHeight = list.offsetHeight;
                                 const introHeight = intro.offsetHeight;
-                                const headersHeight = 150; // section label + title approx
                                 
-                                // Total scrolling needed to see everything
-                                scrollDistance = Math.max(0, listHeight + introHeight + headersHeight - window.innerHeight + 40);
+                                // Total distance to scroll everything past the viewport
+                                // We subtract what's already visible
+                                const totalContentHeight = listHeight + introHeight + headersOffset;
+                                scrollDistance = Math.max(0, totalContentHeight - window.innerHeight + 60);
+                                
+                                // Store the offset for use in onUpdate
+                                section._headersOffset = headersOffset;
                             },
                             onUpdate: (self) => {
                                 if (scrollDistance > 0) {
-                                    const y = -scrollDistance * self.progress;
+                                    const offset = section._headersOffset || 0;
+                                    const y = offset - (scrollDistance * self.progress);
 
                                     if (window.innerWidth <= 1100) {
-                                        // Mobile: move everything up together
                                         gsap.set([list, intro], { y });
                                         gsap.set(list, { opacity: 1, visibility: 'visible' });
-                                        // Slight fade for intro
                                         gsap.set(intro, { opacity: gsap.utils.clamp(0.2, 1, 1 - (self.progress * 1.5)) });
                                     } else {
-                                        // Desktop: standard behavior
-                                        gsap.set(list, { y });
+                                        // Desktop: standard y adjustment if needed, usually offset is 0
+                                        gsap.set(list, { y: -(scrollDistance * self.progress) });
                                     }
                                     
                                     // Mask fading logic (only for top)
