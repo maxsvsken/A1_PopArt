@@ -296,14 +296,14 @@ document.addEventListener('DOMContentLoaded', () => {
                         scrollTrigger: {
                             trigger: section,
                             start: "top top",
-                            end: () => `+=${list.offsetHeight}`,
+                            end: () => `+=${scrollDistance}`,
                             pin: true,
                             scrub: 1,
                             pinSpacing: true,
                             onRefresh: () => {
-                                // Mobile & Portable: we need space for the sticky headers (approx 160px)
+                                // Mobile & Portable: headers take some space, let's keep them visible
                                 const isPortable = window.innerWidth <= 1320;
-                                const headersOffset = isPortable ? 160 : 0;
+                                const headersOffset = isPortable ? 120 : 0;
                                 
                                 // Reset positions with offset
                                 gsap.set([list, intro], { y: headersOffset });
@@ -312,9 +312,10 @@ document.addEventListener('DOMContentLoaded', () => {
                                 const introHeight = intro.offsetHeight;
                                 
                                 // Total distance to scroll everything past the viewport
-                                // We subtract what's already visible
+                                // We subtract what's already visible.
+                                // headersOffset is where we START, so we need to move the content UP by its total height
                                 const totalContentHeight = listHeight + introHeight + headersOffset;
-                                scrollDistance = Math.max(0, totalContentHeight - window.innerHeight + 60);
+                                scrollDistance = Math.max(0, totalContentHeight - window.innerHeight + 80);
                                 
                                 // Store the offset for use in onUpdate
                                 section._headersOffset = headersOffset;
@@ -341,7 +342,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     ScrollTrigger.create({
                         trigger: section,
                         start: "top 50%",
-                        end: () => `+=${list.offsetHeight}`,
+                        end: () => `+=${scrollDistance}`,
                         onEnter: () => updateDot(index),
                         onEnterBack: () => updateDot(index)
                     });
