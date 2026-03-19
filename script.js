@@ -182,6 +182,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (targetElement) {
                 if (isHome) {
+                    const heroContainer = targetElement.querySelector('.container');
+                    if (heroContainer) gsap.set(heroContainer, { opacity: 1, scale: 1, clearProps: "all" });
                     gsap.to(window, { duration: 0, scrollTo: 0, ease: "none" });
                     return;
                 }
@@ -328,7 +330,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             // Мифы и руководство не должны фиксироваться и исчезать мгновенно
-            const isLongSection = section.offsetHeight > window.innerHeight * 1.2 || section.id === 'myths' || section.id === 'director' || section.id === 'code';
+            const isLongSection = section.offsetHeight > window.innerHeight * 1.2 || section.id === 'myths' || section.id === 'director' || section.id === 'code' || section.id === 'hero';
 
             if (!isLongSection) {
                 const tl = gsap.timeline({
