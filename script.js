@@ -310,7 +310,16 @@ document.addEventListener('DOMContentLoaded', () => {
                             onUpdate: (self) => {
                                 // Scroll the list precisely
                                 if (scrollDistance > 0) {
-                                    gsap.set(list, { y: -scrollDistance * self.progress });
+                                    const y = -scrollDistance * self.progress;
+                                    gsap.set(list, { y });
+                                    
+                                    // Dynamic mask: only fade top when actually scrolled
+                                    const fadeAmount = Math.min(80, self.progress * 400); // Gradual fade in of the top mask
+                                    const mask = `linear-gradient(to bottom, transparent 0px, black ${fadeAmount}px, black calc(100% - 80px), transparent 100%)`;
+                                    gsap.set(section.querySelector('.code-text-content'), {
+                                        webkitMaskImage: mask,
+                                        maskImage: mask
+                                    });
                                 }
                             }
                         }
