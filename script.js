@@ -289,30 +289,43 @@ document.addEventListener('DOMContentLoaded', () => {
                 const intro = section.querySelector('.code-intro-img');
 
                 if (list && intro) {
+                    const items = section.querySelectorAll('.code-item');
                     let scrollDistance = 0;
 
-                    // Force the section to pin and the list to scroll
+                    // Force the section to pin
                     const tl = gsap.timeline({
                         scrollTrigger: {
                             trigger: section,
                             start: "top top",
-                            end: () => `+=${list.offsetHeight}`,
+                            end: () => `+=${list.offsetHeight * 1.5}`, // Give it extra scroll length for feeling
                             pin: true,
                             scrub: 1,
-                            pinSpacing: true,
-                            onRefresh: () => {
-                                // Calculate distance to scroll the list safely on any device
-                                gsap.set(list, { y: 0 }); // Temporarily reset to clear transforms
-                                const listTopOffset = list.getBoundingClientRect().top - section.getBoundingClientRect().top;
-                                const visibleListHeight = window.innerHeight - listTopOffset;
-                                scrollDistance = Math.max(0, list.offsetHeight - visibleListHeight + 80);
-                            },
-                            onUpdate: (self) => {
-                                // Scroll the list precisely
-                                if (scrollDistance > 0) {
-                                    gsap.set(list, { y: -scrollDistance * self.progress });
-                                }
-                            }
+                            pinSpacing: true
+                        }
+                    });
+
+                    // Stacking Effect Logic
+                    // We animate items one by one: text collapses and subsequent item slides up
+                    items.forEach((item, i) => {
+                        const content = item.querySelector('.code-content p');
+                        if (i < items.length - 1) {
+                            // Collapse the content of current item and lift it up to let the next one stack
+                            tl.to(content, {
+                                height: 0,
+                                opacity: 0,
+                                margin: 0,
+                                duration: 1,
+                                ease: "power1.inOut"
+                            });
+                            
+                            // Negative margin creates the "stacking" effect (next card slides over)
+                            tl.to(item, {
+                                marginBottom: -item.offsetHeight + 100, // keep header visible
+                                opacity: 0.6,
+                                scale: 0.95,
+                                duration: 1,
+                                ease: "power1.inOut"
+                            }, "<"); // sync with content collapse
                         }
                     });
 
@@ -320,7 +333,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     ScrollTrigger.create({
                         trigger: section,
                         start: "top 50%",
-                        end: () => `+=${list.offsetHeight}`,
+                        end: () => `+=${list.offsetHeight * 1.5}`,
                         onEnter: () => updateDot(index),
                         onEnterBack: () => updateDot(index)
                     });
