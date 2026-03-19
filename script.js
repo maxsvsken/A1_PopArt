@@ -301,19 +301,16 @@ document.addEventListener('DOMContentLoaded', () => {
                             pinSpacing: true,
                             onRefresh: () => {
                                 const isPortable = window.innerWidth <= 1320;
-                                // Even smaller offset to keep things tight
-                                const headersOffset = isPortable ? 80 : 0;
+                                // Pull everything higher
+                                const headersOffset = isPortable ? 60 : 0;
                                 
-                                // Initial positions
                                 gsap.set(intro, { y: headersOffset, opacity: 1 });
                                 const introHeight = intro.offsetHeight;
-                                // Minimal gap
+                                // Zero extra gap
                                 gsap.set(list, { y: headersOffset + introHeight, opacity: 1 });
                                 
                                 const listHeight = list.offsetHeight;
-                                // Exact scroll distance: how much we need to move to see everything
-                                // scrollDistance = content_height - visible_area
-                                scrollDistance = Math.max(0, (listHeight + introHeight + headersOffset) - window.innerHeight + 20);
+                                scrollDistance = Math.max(0, (listHeight + introHeight + headersOffset) - window.innerHeight);
                                 
                                 section._headersOffset = headersOffset;
                                 section._introHeight = introHeight;
@@ -325,10 +322,9 @@ document.addEventListener('DOMContentLoaded', () => {
                                     const scrollY = scrollDistance * self.progress;
 
                                     if (window.innerWidth <= 1320) {
-                                        // Update both intro and list
                                         gsap.set(intro, { 
                                             y: hOffset - scrollY, 
-                                            opacity: gsap.utils.clamp(0.1, 1, 1 - (self.progress * 1.8)) 
+                                            opacity: 1 - (self.progress * 1.5)
                                         });
                                         gsap.set(list, { 
                                             y: hOffset + iHeight - scrollY,

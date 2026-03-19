@@ -973,18 +973,18 @@ details[open].faq-item p {
 
     #code .code-main-title {
         position: sticky !important;
-        top: 50px; /* offset by section label approx height */
+        top: 40px; /* pull title higher */
         z-index: 25 !important;
-        padding-bottom: 20px;
+        padding-bottom: 0px; /* remove title bottom space */
         /* Make bottom of the sticky panel semi-transparent */
-        -webkit-mask-image: linear-gradient(to bottom, black 0%, black 80%, rgba(0,0,0,0.4) 100%);
-        mask-image: linear-gradient(to bottom, black 0%, black 80%, rgba(0,0,0,0.4) 100%);
+        -webkit-mask-image: linear-gradient(to bottom, black 0%, black 85%, transparent 100%);
+        mask-image: linear-gradient(to bottom, black 0%, black 85%, transparent 100%);
     }
-
+ 
     .code-intro-img {
         position: relative !important;
         z-index: 20 !important;
-        padding-bottom: 20px;
+        padding-bottom: 0px; /* remove intro bottom space */
         text-align: center;
         flex-shrink: 0;
     }
@@ -1264,13 +1264,14 @@ details[open].faq-item p {
 
     /* Mobile specific for Code section */
     .code-intro-img {
-        margin-bottom: 20px !important;
+        margin-bottom: 0 !important; /* tight! */
+        padding-bottom: 0 !important;
     }
 
     .code-intro-img .art-frame {
         max-width: 100% !important;
-        margin: 15px auto !important;
-        padding: 15px !important;
+        margin: 0 auto !important; /* pull higher */
+        padding: 5px !important; /* tighter frame */
     }
     
     .code-intro-img img {
