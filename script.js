@@ -290,52 +290,48 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 if (list && intro) {
                     const items = section.querySelectorAll('.code-item');
-                    let scrollDistance = 0;
-
-                    // Force the section to pin
-                    const tl = gsap.timeline({
-                        scrollTrigger: {
-                            trigger: section,
-                            start: "top top",
-                            end: () => `+=${list.offsetHeight * 2.5}`, // Increased for more time per card
-                            pin: true,
-                            scrub: 1,
-                            pinSpacing: true
-                        }
+                    // Set stacking order upfront
+                    items.forEach((item, i) => {
+                        gsap.set(item, { zIndex: i + 1 });
                     });
 
-                    // Stacking Effect Logic
-                    // We animate items one by one: text collapses and subsequent item slides up
+                    // Main Pinning ScrollTrigger
+                    ScrollTrigger.create({
+                        trigger: section,
+                        start: "top top",
+                        end: () => `+=${items.length * 100}%`, // 100% of height per item
+                        pin: true,
+                        pinSpacing: true,
+                        scrub: 0.5
+                    });
+
+                    // Individual Item Animations
                     items.forEach((item, i) => {
+                        if (i === items.length - 1) return; // Last item doesn't collapse
+
                         const content = item.querySelector('.code-content p');
                         const header = item.querySelector('.code-content h4');
                         const num = item.querySelector('.code-num');
-                        
-                        // To achieve stacking from bottom to top (like cards piling up):
-                        // Each subsequent item should have a HIGHER z-index
-                        gsap.set(item, { zIndex: i + 1 });
+                        const headerHeight = Math.max(header.offsetHeight, num.offsetHeight) + 60;
 
-                        if (i < items.length - 1) {
-                            // Calculate how much to leave visible (header + padding)
-                            const headerHeight = Math.max(header.offsetHeight, num.offsetHeight) + 60; // 60 for vertical padding
-                            
-                            // Collapse the content of current item
-                            tl.to(content, {
-                                height: 0,
-                                opacity: 0,
-                                margin: 0,
-                                duration: 1,
-                                ease: "power1.inOut"
-                            });
-                            
-                            // Negative margin creates the "stacking" effect (next card slides over)
-                            const totalHeight = item.offsetHeight;
-                            tl.to(item, {
-                                marginBottom: -(totalHeight - headerHeight),
-                                duration: 1,
-                                ease: "power1.inOut"
-                            }, "<"); 
-                        }
+                        gsap.timeline({
+                            scrollTrigger: {
+                                trigger: section,
+                                start: () => `top+=${i * (window.innerHeight)} top`,
+                                end: () => `top+=${(i + 1) * (window.innerHeight)} top`,
+                                scrub: 0.5
+                            }
+                        })
+                        .to(content, {
+                            height: 0,
+                            opacity: 0,
+                            margin: 0,
+                            ease: "power1.inOut"
+                        })
+                        .to(item, {
+                            marginBottom: -(item.offsetHeight - headerHeight),
+                            ease: "power1.inOut"
+                        }, "<");
                     });
 
                     // Refresh to make sure pinning and start/end are correct
@@ -345,7 +341,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     ScrollTrigger.create({
                         trigger: section,
                         start: "top 50%",
-                        end: () => `+=${list.offsetHeight * 1.5}`,
+                        end: () => `+=${items.length * 100}%`,
                         onEnter: () => updateDot(index),
                         onEnterBack: () => updateDot(index)
                     });
