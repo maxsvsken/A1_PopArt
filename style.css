@@ -966,8 +966,8 @@ details[open].faq-item p {
     }
 
     .code-intro-img img {
-        max-height: 250px !important;
-        object-fit: cover !important;
+        max-height: 25vh !important;
+        object-fit: contain !important;
     }
 
     .code-section {
@@ -1242,7 +1242,8 @@ details[open].faq-item p {
     }
     
     .code-intro-img img {
-        max-height: 150px !important;
+        max-height: 180px !important;
+        object-fit: contain !important;
     }
 
     .code-item {
