@@ -954,7 +954,8 @@ details[open].faq-item p {
 
     /* Mobile Sticky Wrapper for Headers and Intro */
     #code .section-label,
-    #code .code-main-title {
+    #code .code-main-title,
+    .code-intro-img {
         background-color: var(--color-dark);
         background-image: radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px);
         background-size: 8px 8px;
@@ -962,25 +963,19 @@ details[open].faq-item p {
         margin: 0 !important;
     }
 
-    .code-intro-img {
-        width: 100% !important;
-        margin: 0 !important;
-        background: none !important; /* Remove the plate from under the image */
-    }
-
     #code .section-label {
         position: sticky !important;
         top: 0;
         z-index: 30 !important;
-        padding-top: 10px;
+        padding-top: 20px;
         padding-bottom: 5px;
     }
 
     #code .code-main-title {
         position: sticky !important;
-        top: 40px; /* more compact offset */
+        top: 50px; /* offset by section label approx height */
         z-index: 25 !important;
-        padding-bottom: 10px;
+        padding-bottom: 20px;
         /* Make bottom of the sticky panel semi-transparent */
         -webkit-mask-image: linear-gradient(to bottom, black 0%, black 80%, rgba(0,0,0,0.4) 100%);
         mask-image: linear-gradient(to bottom, black 0%, black 80%, rgba(0,0,0,0.4) 100%);
@@ -989,7 +984,7 @@ details[open].faq-item p {
     .code-intro-img {
         position: relative !important;
         z-index: 20 !important;
-        padding-bottom: 0px;
+        padding-bottom: 20px;
         text-align: center;
         flex-shrink: 0;
     }
