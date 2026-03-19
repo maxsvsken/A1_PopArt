@@ -999,9 +999,9 @@ details[open].faq-item p {
         width: 100% !important;
         padding-right: 0 !important;
         position: relative !important;
-        margin-top: 0 !important;
+        margin-top: 50px !important;
         overflow: visible !important;
-        transform: none; /* allow GSAP scroll */
+        /* Remove transform: none to allow GSAP stacking */
     }
 }
 

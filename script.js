@@ -308,26 +308,38 @@ document.addEventListener('DOMContentLoaded', () => {
                     // We animate items one by one: text collapses and subsequent item slides up
                     items.forEach((item, i) => {
                         const content = item.querySelector('.code-content p');
+                        const header = item.querySelector('.code-content h4');
+                        const num = item.querySelector('.code-num');
+                        
+                        // To achieve stacking from bottom to top (like cards piling up):
+                        // Each subsequent item should have a HIGHER z-index
+                        gsap.set(item, { zIndex: i + 1 });
+
                         if (i < items.length - 1) {
-                            // Collapse the content of current item and lift it up to let the next one stack
+                            // Calculate how much to leave visible (header + padding)
+                            const headerHeight = Math.max(header.offsetHeight, num.offsetHeight) + 60; // 60 for vertical padding
+                            
+                            // Collapse the content of current item
                             tl.to(content, {
                                 height: 0,
                                 opacity: 0,
                                 margin: 0,
                                 duration: 1,
-                                ease: "power1.inOut"
+                                ease: "none"
                             });
                             
                             // Negative margin creates the "stacking" effect (next card slides over)
+                            const totalHeight = item.offsetHeight;
                             tl.to(item, {
-                                marginBottom: -item.offsetHeight + 100, // keep header visible
-                                opacity: 0.6,
-                                scale: 0.95,
+                                marginBottom: -(totalHeight - headerHeight),
                                 duration: 1,
-                                ease: "power1.inOut"
-                            }, "<"); // sync with content collapse
+                                ease: "none"
+                            }, "<"); 
                         }
                     });
+
+                    // Refresh to make sure pinning and start/end are correct
+                    ScrollTrigger.refresh();
 
                     // Add dot tracking
                     ScrollTrigger.create({
