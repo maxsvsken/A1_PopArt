@@ -1003,7 +1003,7 @@ details[open].faq-item p {
         min-height: 100vh !important;
         display: flex !important;
         flex-direction: column !important;
-        padding-top: 0 !important; /* handled by sticky headers now */
+        padding-top: 0 !important; 
         padding-bottom: 20px !important;
         overflow: hidden !important;
     }

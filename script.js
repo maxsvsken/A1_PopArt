@@ -302,29 +302,27 @@ document.addEventListener('DOMContentLoaded', () => {
                             pinSpacing: true,
                             onRefresh: () => {
                                 // Calculate distance to scroll the list safely
-                                gsap.set(list, { y: 0 }); // reset
-                                if (window.innerWidth <= 1100) {
-                                    gsap.set(intro, { y: 0, opacity: 1, marginTop: 0, clipPath: 'none' });
-                                }
+                                gsap.set([list, intro], { y: 0 }); // reset
                                 
-                                const listOriginTop = list.getBoundingClientRect().top;
-                                const sectionTop = section.getBoundingClientRect().top;
-                                const listTopInContainer = listOriginTop - sectionTop;
+                                // Calculate how much list overflow we have
+                                // We want the bottom of the list to reach the bottom of the screen
+                                const listHeight = list.offsetHeight;
+                                const introHeight = intro.offsetHeight;
+                                const headersHeight = 150; // section label + title approx
                                 
-                                const visibleAreaHeight = window.innerHeight - listTopInContainer;
-                                scrollDistance = Math.max(0, list.offsetHeight - visibleAreaHeight + 40);
+                                // Total scrolling needed to see everything
+                                scrollDistance = Math.max(0, listHeight + introHeight + headersHeight - window.innerHeight + 40);
                             },
                             onUpdate: (self) => {
                                 if (scrollDistance > 0) {
                                     const y = -scrollDistance * self.progress;
 
                                     if (window.innerWidth <= 1100) {
-                                        // Mobile: both elements move up together
-                                        gsap.set(list, { y, opacity: 1, visibility: 'visible' });
-                                        gsap.set(intro, { 
-                                            y: y, 
-                                            opacity: gsap.utils.clamp(0, 1, 1 - (self.progress * 2)) 
-                                        });
+                                        // Mobile: move everything up together
+                                        gsap.set([list, intro], { y });
+                                        gsap.set(list, { opacity: 1, visibility: 'visible' });
+                                        // Slight fade for intro
+                                        gsap.set(intro, { opacity: gsap.utils.clamp(0.2, 1, 1 - (self.progress * 1.5)) });
                                     } else {
                                         // Desktop: standard behavior
                                         gsap.set(list, { y });
