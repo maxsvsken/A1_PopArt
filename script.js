@@ -304,7 +304,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                 // Calculate distance to scroll the list safely on any device
                                 gsap.set(list, { y: 0 }); // Temporarily reset
                                 if (window.innerWidth <= 1100) {
-                                    gsap.set(intro, { opacity: 1, display: '', height: '', marginBottom: '' });
+                                    gsap.set(intro, { opacity: 1, marginTop: 0, marginBottom: 20 });
                                 }
                                 const listTopOffset = list.getBoundingClientRect().top - section.getBoundingClientRect().top;
                                 const visibleListHeight = window.innerHeight - listTopOffset;
@@ -325,13 +325,11 @@ document.addEventListener('DOMContentLoaded', () => {
                                         const fadeEnd = 0.2; // vanish in first 20% of section scroll
                                         const introProg = gsap.utils.normalize(fadeStart, fadeEnd, self.progress);
                                         const introOpacity = gsap.utils.clamp(0, 1, 1 - introProg);
-                                        const introHeightRem = gsap.utils.clamp(0, 1, 1 - introProg);
-
+                                        
                                         gsap.set(intro, { 
                                             opacity: introOpacity,
-                                            height: introOpacity > 0 ? 'auto' : 0,
-                                            marginBottom: 20 * introHeightRem,
-                                            display: introOpacity > 0.01 ? 'block' : 'none'
+                                            marginTop: -intro.offsetHeight * introProg,
+                                            pointerEvents: introOpacity < 0.1 ? 'none' : 'auto'
                                         });
                                     }
 
