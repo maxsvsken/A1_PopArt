@@ -111,6 +111,7 @@ body {
     min-height: 100dvh;
     display: flex;
     flex-direction: column;
+    padding-bottom: 0 !important;
 }
 
 .hero-centering-wrapper {
@@ -265,6 +266,7 @@ body {
     overflow: hidden;
     z-index: 10;
     border-top: 2px solid var(--color-accent);
+    border-bottom: 2px solid var(--color-accent);
     display: flex;
 }
 
@@ -358,13 +360,13 @@ body {
     filter: grayscale(0%);
 }
 
-/* Expertise Marquee */
-.expertise-marquee-container {
+/* About Marquee */
+.about-marquee-container {
     position: relative;
     width: 100%;
     background-color: var(--color-black);
     color: var(--color-white);
-    padding: 20px 0;
+    padding: 15px 0;
     margin-top: 60px;
     overflow: hidden;
     z-index: 10;
@@ -373,29 +375,29 @@ body {
     display: flex;
 }
 
-.expertise-marquee {
+.about-marquee {
     display: flex;
     white-space: nowrap;
-    -webkit-animation: marquee-scroll 40s linear infinite;
-    animation: marquee-scroll 40s linear infinite;
+    -webkit-animation: marquee-scroll 80s linear infinite;
+    animation: marquee-scroll 80s linear infinite;
     font-family: var(--font-heading);
-    font-size: 1.25rem;
-    font-weight: 600;
+    font-size: 1.1rem;
+    font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 0.05em;
 }
 
-.expertise-marquee:hover {
+.about-marquee:hover {
     -webkit-animation-play-state: paused;
     animation-play-state: paused;
 }
 
-.expertise-marquee span {
+.about-marquee span {
     display: inline-flex;
     align-items: center;
 }
 
-.expertise-marquee span::after {
+.about-marquee span::after {
     content: "•";
     display: inline-block;
     color: var(--color-accent);
