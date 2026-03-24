@@ -1325,8 +1325,7 @@ details[open].faq-item p {
 
     /* Mobile specific for Code section */
     .code-intro-img {
-        margin-bottom: 0 !important; /* tight! */
-        padding-bottom: 0 !important;
+        margin-bottom: 40px !important;
     }
 
     .code-intro-img .art-frame {
