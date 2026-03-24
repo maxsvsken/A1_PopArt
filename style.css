@@ -17,7 +17,7 @@
 
 html {
     scroll-behavior: smooth;
-    scroll-padding-top: 100px; /* Offset for sticky header */
+    scroll-padding-top: 130px; /* Navbar height (~90px) + Gap (40px) */
 }
 
 /* Reset */
@@ -535,7 +535,7 @@ body {
 
 /* Sections General */
 .strict-section {
-    padding: 140px 0;
+    padding: 40px 0 140px 0;
     min-height: 100vh;
     min-height: 100dvh;
     display: flex;
@@ -1409,11 +1409,11 @@ details[open].faq-item p {
         left: 0;
     }
     html {
-        scroll-padding-top: 90px !important;
+        scroll-padding-top: 130px !important;
     }
 
     .strict-section {
-        padding: 90px 0 60px 0 !important;
+        padding: 40px 0 60px 0 !important;
     }
 
     .legend-layout, .director-layout, .code-layout {
