@@ -266,8 +266,8 @@ body {
 .hero-marquee {
     display: flex;
     white-space: nowrap;
-    -webkit-animation: marquee-scroll 50s linear infinite;
-    animation: marquee-scroll 50s linear infinite;
+    -webkit-animation: marquee-scroll 80s linear infinite;
+    animation: marquee-scroll 80s linear infinite;
     font-family: var(--font-heading);
     font-size: 1.1rem;
     font-weight: 500;
