@@ -554,7 +554,7 @@ body {
 .section-title {
     font-size: 3.5rem;
     line-height: 1.1;
-    margin-bottom: 30px;
+    margin-bottom: 40px; /* Standard gap to text */
 }
 
 .contact-title {
@@ -747,7 +747,7 @@ details[open].faq-item p {
 .director-layout .section-label,
 .code-layout .section-label {
     grid-column: 1 / -1;
-    margin-bottom: 20px;
+    margin-bottom: 40px; /* Standard gap to Image/Sidebar */
 }
 
 .stats-strip {
@@ -846,7 +846,7 @@ details[open].faq-item p {
     top: 20px;
     display: flex;
     flex-direction: column;
-    gap: 40px; /* Space between Image and Title */
+    gap: 40px; /* Standard gap within sidebar */
     text-align: center;
 }
 
@@ -1402,6 +1402,25 @@ details[open].faq-item p {
     .faq-item summary::before,
     .faq-item summary::after {
         left: 0;
+    }
+    .legend-layout, .director-layout, .code-layout {
+        gap: 40px !important;
+    }
+
+    .section-label {
+        margin-bottom: 40px !important;
+    }
+
+    .section-title {
+        margin-bottom: 40px !important;
+    }
+
+    .code-sidebar {
+        gap: 40px !important;
+    }
+
+    .art-frame {
+        margin-bottom: 40px !important;
     }
 }
 
