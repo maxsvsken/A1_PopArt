@@ -144,6 +144,41 @@ document.addEventListener('DOMContentLoaded', () => {
 
     initHeroAnimation();
 
+    // --- About staggered text animation ---
+    function initAboutAnimation() {
+        const title = document.querySelector('.stagger-text');
+        if (!title) return;
+
+        const text = title.textContent.trim();
+        title.innerHTML = '';
+        
+        // Manual split into chars
+        for (let i = 0; i < text.length; i++) {
+            let char = text[i];
+            let span = document.createElement('span');
+            span.className = 'char';
+            span.innerHTML = char === ' ' ? '&nbsp;' : char;
+            title.appendChild(span);
+        }
+
+        const chars = title.querySelectorAll('.char');
+        
+        gsap.from(chars, {
+            scrollTrigger: {
+                trigger: title,
+                start: "top 85%",
+                toggleActions: "play none none none"
+            },
+            y: 50,
+            opacity: 0,
+            stagger: 0.015, // Faster stagger for long text
+            duration: 0.6,
+            ease: "back.out(1.7)"
+        });
+    }
+
+    initAboutAnimation();
+
     // --- Smooth Scroll for anchors ---
     const navAnchors = document.querySelectorAll('.nav-btn, .dot-btn, .logo, .dot-nav a');
 
