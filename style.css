@@ -1338,23 +1338,7 @@ details[open].faq-item p {
         text-align: left;
     }
 
-    /* Mobile specific for Code section */
-    .code-intro-img {
-        margin-bottom: 40px !important;
-    }
-
-    .code-intro-img .art-frame {
-        max-width: 100% !important;
-        margin: 0 auto !important; /* pull higher */
-        padding: 5px !important; /* tighter frame */
-    }
-    
-    .code-intro-img img {
-        height: auto !important;
-        width: 100% !important;
-        object-fit: cover !important;
-    }
-
+    /* Code list items on mobile */
     .code-item {
         gap: 15px;
         padding: 20px 0;
