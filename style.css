@@ -17,7 +17,7 @@
 
 html {
     scroll-behavior: smooth;
-    scroll-padding-top: 90px; /* Exact navbar height (~90px) */
+    scroll-padding-top: 70px; /* Exact navbar height */
 }
 
 /* Reset */
@@ -444,7 +444,7 @@ body {
     z-index: 10000;
     background: transparent;
     border-bottom: none;
-    padding: 25px 0;
+    padding: 15px 0; /* Roughly 70px total height */
     transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
@@ -535,7 +535,7 @@ body {
 
 /* Sections General */
 .strict-section {
-    padding: 130px 0 140px 0; /* Header (90px) + Gap (40px) */
+    padding: 110px 0 140px 0; /* Header (70px) + Gap (40px) */
     min-height: 100vh;
     min-height: 100dvh;
     display: flex;
@@ -1408,11 +1408,11 @@ details[open].faq-item p {
         left: 0;
     }
     html {
-        scroll-padding-top: 90px !important;
+        scroll-padding-top: 70px !important;
     }
 
     .strict-section {
-        padding: 130px 0 60px 0 !important;
+        padding: 110px 0 60px 0 !important;
     }
 
     .legend-layout, .director-layout, .code-layout {
