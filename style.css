@@ -252,7 +252,6 @@ body {
 /* Hero Marquee */
 .hero-marquee-container {
     position: relative;
-    margin-top: 5px;
     width: 100%;
     background-color: var(--color-black);
     color: var(--color-white);
