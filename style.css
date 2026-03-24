@@ -134,20 +134,19 @@ body {
     width: 100%;
     height: 100%;
     /* Light Grey Background for the whole section blend */
-    background-color: var(--color-grey-light);
+    background-color: #FAFAFA;
     background-image: url('images/retro-groovy-background-wavy-vintage-trippy-psychedelic-wallpaper-purple-yellow-liquid-hippie-texture-colorful-pattern-for-cover-poster-in-60s-or-70s-style-vector.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    background-blend-mode: luminosity;
 
     /* Luminosity for a subtle textured look on grey */
     background-blend-mode: luminosity;
 
     /* Make it look white-light-grey */
-    filter: grayscale(1) brightness(1.2) contrast(0.9);
+    filter: grayscale(1) brightness(1.4) contrast(0.7);
 
-    opacity: 0.15;
+    opacity: 0.12;
     /* Clean and professional texturing */
     z-index: 0;
     pointer-events: none;
@@ -323,6 +322,89 @@ body {
     }
 }
 
+/* Trust Logos Section */
+.trust-section {
+    margin-top: 80px;
+    margin-bottom: 20px;
+}
+
+.trust-title {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    color: var(--color-grey-dark);
+    letter-spacing: 0.1em;
+    margin-bottom: 40px;
+}
+
+.trust-logos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 60px;
+}
+
+.trust-logos img {
+    max-height: 40px;
+    width: auto;
+    filter: grayscale(100%);
+    opacity: 0.5;
+    transition: all 0.3s ease;
+}
+
+.trust-logos img:hover {
+    opacity: 1;
+    filter: grayscale(0%);
+}
+
+/* Expertise Marquee */
+.expertise-marquee-container {
+    position: relative;
+    width: 100%;
+    background-color: var(--color-black);
+    color: var(--color-white);
+    padding: 20px 0;
+    margin-top: 60px;
+    overflow: hidden;
+    z-index: 10;
+    border-top: 2px solid var(--color-accent);
+    border-bottom: 2px solid var(--color-accent);
+    display: flex;
+}
+
+.expertise-marquee {
+    display: flex;
+    white-space: nowrap;
+    -webkit-animation: marquee-scroll 40s linear infinite;
+    animation: marquee-scroll 40s linear infinite;
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.expertise-marquee:hover {
+    -webkit-animation-play-state: paused;
+    animation-play-state: paused;
+}
+
+.expertise-marquee span {
+    display: inline-flex;
+    align-items: center;
+}
+
+.expertise-marquee span::after {
+    content: "•";
+    display: inline-block;
+    color: var(--color-accent);
+    margin: 0 40px;
+    font-size: 2rem;
+    vertical-align: middle;
+    line-height: 0;
+}
+
 /* 01 Legend Section - Pop-Art Halftone Dots Background */
 .legend-section {
     background-color: var(--color-white);
@@ -331,7 +413,7 @@ body {
     /* Classic pop-art dot size */
 }
 
-/* 02 Director & Myths Sections - Grey Groovy Pattern */
+/* 02 Director & Myths Sections - Blue Rays Pattern */
 .director-section,
 .myths-section {
     position: relative;
@@ -349,14 +431,14 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: var(--color-grey-light);
+    background-color: #FAFAFA;
     background-image: url('images/retro-groovy-background-wavy-vintage-trippy-psychedelic-wallpaper-purple-yellow-liquid-hippie-texture-colorful-pattern-for-cover-poster-in-60s-or-70s-style-vector.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     background-blend-mode: luminosity;
-    filter: grayscale(1) brightness(1.1);
-    opacity: 0.1;
+    filter: grayscale(1) brightness(1.4) contrast(0.7);
+    opacity: 0.08;
     z-index: 0;
     pointer-events: none;
 }
