@@ -149,17 +149,30 @@ document.addEventListener('DOMContentLoaded', () => {
         const title = document.querySelector('.stagger-text');
         if (!title) return;
 
-        const text = title.textContent.trim();
+        const originalText = title.textContent.trim();
+        const words = originalText.split(/\s+/);
         title.innerHTML = '';
         
-        // Manual split into chars
-        for (let i = 0; i < text.length; i++) {
-            let char = text[i];
-            let span = document.createElement('span');
-            span.className = 'stagger-char';
-            span.innerHTML = char === ' ' ? '&nbsp;' : char;
-            title.appendChild(span);
-        }
+        words.forEach((word, wordIndex) => {
+            const wordSpan = document.createElement('span');
+            wordSpan.style.display = 'inline-block';
+            wordSpan.style.whiteSpace = 'nowrap';
+            
+            for (let i = 0; i < word.length; i++) {
+                let char = word[i];
+                let charSpan = document.createElement('span');
+                charSpan.className = 'stagger-char';
+                charSpan.innerHTML = char;
+                wordSpan.appendChild(charSpan);
+            }
+            
+            title.appendChild(wordSpan);
+            
+            // Add a space after the word (except the last one)
+            if (wordIndex < words.length - 1) {
+                title.appendChild(document.createTextNode(' '));
+            }
+        });
 
         const chars = title.querySelectorAll('.stagger-char');
         
