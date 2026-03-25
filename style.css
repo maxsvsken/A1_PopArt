@@ -1696,3 +1696,11 @@ details[open].faq-item p {
         padding: 25px;
     }
 }
+
+/* Specific centering for About text on mobile */
+@media (max-width: 900px) {
+    .about-text-container,
+    .stagger-text {
+        text-align: center !important;
+    }
+}
