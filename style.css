@@ -2007,10 +2007,10 @@ details[open].faq-item p {
 .dot-nav {
     position: fixed !important;
     top: 50% !important;
-    right: 20px !important;
+    right: 40px !important;
     transform: translateY(-50%) !important;
-    z-index: 9000 !important;
-    pointer-events: none !important;
+    z-index: 100000 !important;
+    pointer-events: auto !important;
     display: block !important;
 }
 
@@ -2067,12 +2067,7 @@ details[open].faq-item p {
     border: 1px solid var(--color-accent);
 }
 
-@media (max-width: 1100px) {
-    .dot-nav {
-        display: none !important;
-        /* Hide dots on mobile/tablets to avoid overlap */
-    }
-}
+/* .dot-nav visibility restored on all devices */
 
 /* Modal Styles */
 .modal {
