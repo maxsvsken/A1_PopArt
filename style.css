@@ -101,8 +101,8 @@ body {
     position: relative;
     overflow: visible;
     background-color: var(--color-white);
-    min-height: 100vh;
-    min-height: 100dvh;
+    height: 100vh;
+    height: 100dvh;
     display: flex;
     flex-direction: column;
     padding-bottom: 0 !important;
@@ -724,7 +724,7 @@ body {
     background: var(--color-white);
     position: relative;
     overflow: visible;
-    padding: 100px 0 60px 0 !important; /* Slightly more top padding for safety */
+    padding: 100px 0 0 0 !important; /* Removed bottom padding to keep marquee in viewport */
 }
 
 .strict-section>.container {
