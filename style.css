@@ -1279,11 +1279,17 @@ details[open].faq-item p {
     color: var(--color-accent);
 }
 
-.exp-num {
+.exp-tool-icon {
+    width: 32px;
+    height: 32px;
     color: var(--color-accent);
-    font-weight: 700;
     margin-right: 30px;
-    font-size: 1.2rem;
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+}
+
+.expertise-item:hover .exp-tool-icon {
+    transform: rotate(15deg) scale(1.1);
 }
 
 .exp-title {
