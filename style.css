@@ -2530,4 +2530,28 @@ details[open].expertise-item .exp-content {
         transform: translateY(0);
     }
 }
+
+/* Futuristic Myths Element */
+.myths-floating-element {
+    position: absolute;
+    bottom: 5%;
+    right: 2%;
+    width: 300px;
+    height: auto;
+    z-index: 5;
+    pointer-events: none;
+    animation: floatMyth 8s ease-in-out infinite;
+    opacity: 0.9;
+    filter: drop-shadow(0 0 20px rgba(0, 162, 255, 0.4));
+}
+
+@keyframes floatMyth {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-30px) rotate(10deg);
+    }
+}
+
 
